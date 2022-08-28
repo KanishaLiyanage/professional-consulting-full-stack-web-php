@@ -24,33 +24,30 @@ if (isset($_POST['signup']) && isset($_FILES['image'])) {
 
             if (in_array($img_ex_lc, $allowed_extensions)) {
 
-                $new_img_name = uniqid("CUSTOMER_IMG-", true) . "." . $img_ex_lc;
+                $new_img_name = uniqid("CONSULTANT-", true) . "." . $img_ex_lc;
                 $img_upload_path = '../assets/uploads/profile_pics/' . $new_img_name;
 
                 move_uploaded_file($tmp_name, $img_upload_path);
 
-                $uname = mysqli_real_escape_string($connection, $_POST['username']);
-                $umail = mysqli_real_escape_string($connection, $_POST['email']);
-                $upw = mysqli_real_escape_string($connection, $_POST['pw']);
-                $uno = mysqli_real_escape_string($connection, $_POST['number']);
-                $uadr = mysqli_real_escape_string($connection, $_POST['address']);
-                $upost = mysqli_real_escape_string($connection, $_POST['postalcode']);
-                $ucity = mysqli_real_escape_string($connection, $_POST['city']);
-                $uprov = mysqli_real_escape_string($connection, $_POST['province']);
-                $ucountry = mysqli_real_escape_string($connection, $_POST['country']);
-
-                //$encrypted_password = sha1($upw);
-
-                $query = "INSERT INTO customers(username, email, password, mobile_number, address, postal_code, city, province, country, image)
-                    VALUES ('{$uname}','{$umail}','{$upw}','{$uno}','{$uadr}','{$upost}','{$ucity}','{$uprov}','{$ucountry}','{$new_img_name}')";
-
+                $username = mysqli_real_escape_string($connection, $_POST['username']);
+                $firstName = mysqli_real_escape_string($connection, $_POST['firstName']);
+                $lastName = mysqli_real_escape_string($connection, $_POST['lastName']);
+                $email = mysqli_real_escape_string($connection, $_POST['email']);
+                $password = mysqli_real_escape_string($connection, $_POST['password']);
+                $title = mysqli_real_escape_string($connection, $_POST['title']);
+                $description = mysqli_real_escape_string($connection, $_POST['description']);
+                $availability = mysqli_real_escape_string($connection, $_POST['availability']);
+            
+                $query = "INSERT INTO consultants(username, firstName, lastName, email, password, image, title, description, availability)
+                          VALUES ('{$username}', '{$firstName}', '{$lastName}', '{$email}', '{$password}', '{$title}', '{$description}', '{$availability}')";
+            
                 $result = mysqli_query($connection, $query);
 
                 if ($result) {
-                    $customer = mysqli_fetch_assoc($result);
-                    $_SESSION['cus_id'] = $customer['customer_id'];
-                    $_SESSION['cus_username'] = $customer['username'];
-                    header("Location: ./home.php");
+                    $consultant = mysqli_fetch_assoc($result);
+                    $_SESSION['con_id'] = $consultant['consultant_id'];
+                    $_SESSION['con_username'] = $consultant['username'];
+                    header("Location: consultantDashboard.php");
                 }
             } else {
                 echo "File extension can not be allowed! Please upload jpg files only.";
@@ -80,37 +77,28 @@ if (isset($_POST['signup']) && isset($_FILES['image'])) {
 
     <a href="consultantLogin.php"> back </a>
 
-    <form action="signup.php" method="POST" enctype="multipart/form-data">
+    <form action="consultantSignUp.php" method="POST" enctype="multipart/form-data">
 
-        <h1>Sign Up</h1>
+        <h1>Sign Up as a Consultant</h1>
 
-        <fieldset>
-            <legend><span class="number">1</span>Your basic info</legend>
-            <label for="no">Mobile:</label>
-            <input type="text" name="number" required>
-            <label for="address">Address:</label>
-            <textarea id="bio" name="address" required></textarea>
-            <label for="pcode">Postal Code:</label>
-            <input type="text" name="postalcode" required>
-            <label for="city">City:</label>
-            <input type="text" name="city" required>
-            <label for="province">Province:</label>
-            <input type="text" name="province" required>
-            <label for="country">Country:</label>
-            <input type="text" name="country" required>
-            <label for="image">Upload your Image (only jpg accepted):</label>
-            <input type="file" name="image" required>
-        </fieldset>
-
-        <fieldset>
-            <label for="name">User Name:</label>
-            <input type="text" id="name" name="username" required>
-            <label for="mail">Email:</label>
-            <input type="email" id="mail" name="email" required>
-            <legend><span class="number">2</span>Your profile</legend>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="pw" required>
-        </fieldset>
+        User Name: <input type="text" name="username" maxlength="50" required>
+        <br>
+        First Name: <input type="text" name="firstName" maxlength="50" required>
+        <br>
+        Last Name: <input type="text" name="lastName" maxlength="50" required>
+        <br>
+        Email: <input type="email" name="email" required>
+        <br>
+        Password: <input type="password" name="password" required>
+        <br>
+        Image: <input type="file" name="image" required>
+        <br>
+        Title: <input type="text" name="title" required>
+        <br>
+        Description: <textarea name="description" rows="4" cols="50" required></textarea>
+        <br>
+        Availability: <input type="text" name="availability" required>
+        <br>
 
         <button type="submit" name="signup">Sign Up</button>
 

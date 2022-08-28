@@ -7,22 +7,22 @@ if (isset($_POST['login'])) {
     $email = mysqli_real_escape_string($connection, $_POST['email']);
     $password = mysqli_real_escape_string($connection, $_POST['pw']);
 
-    $query = "SELECT * FROM customers
+    $query = "SELECT * FROM consultants
               WHERE email = '{$email}'
               AND
               password = '{$password}'
               AND
-              is_deleted = 0
+              isDeleted = 0
               LIMIT 1";
 
     $result = mysqli_query($connection, $query);
 
     if ($result) {
         if (mysqli_num_rows($result) == 1) {
-            $customer = mysqli_fetch_assoc($result);
-            $_SESSION['cus_id'] = $customer['customer_id'];
-            $_SESSION['cus_username'] = $customer['username'];
-            header("Location: home.php");
+            $consultant = mysqli_fetch_assoc($result);
+            $_SESSION['con_id'] = $consultant['consultant_id'];
+            $_SESSION['con_username'] = $consultant['username'];
+            header("Location: consultantDashboard.php");
         }
     } else {
         echo "Login Failed!";
