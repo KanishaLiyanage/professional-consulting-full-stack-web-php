@@ -29,17 +29,16 @@ if (isset($_POST['signup']) && isset($_FILES['image'])) {
 
                 move_uploaded_file($tmp_name, $img_upload_path);
 
-                $username = mysqli_real_escape_string($connection, $_POST['username']);
-                $firstName = mysqli_real_escape_string($connection, $_POST['firstName']);
-                $lastName = mysqli_real_escape_string($connection, $_POST['lastName']);
-                $email = mysqli_real_escape_string($connection, $_POST['email']);
-                $password = mysqli_real_escape_string($connection, $_POST['password']);
-                $title = mysqli_real_escape_string($connection, $_POST['title']);
-                $description = mysqli_real_escape_string($connection, $_POST['description']);
-                $availability = mysqli_real_escape_string($connection, $_POST['availability']);
+                $user_name = mysqli_real_escape_string($connection, $_POST['username']);
+                $first_Name = mysqli_real_escape_string($connection, $_POST['firstName']);
+                $last_Name = mysqli_real_escape_string($connection, $_POST['lastName']);
+                $con_email = mysqli_real_escape_string($connection, $_POST['email']);
+                $pw = mysqli_real_escape_string($connection, $_POST['password']);
+                $con_title = mysqli_real_escape_string($connection, $_POST['title']);
+                $desc = mysqli_real_escape_string($connection, $_POST['description']);
+                $avl = mysqli_real_escape_string($connection, $_POST['availability']);
             
-                $query = "INSERT INTO consultants(username, firstName, lastName, email, password, image, title, description, availability)
-                          VALUES ('{$username}', '{$firstName}', '{$lastName}', '{$email}', '{$password}', '{$title}', '{$description}', '{$availability}')";
+                $query = "INSERT INTO consultants(username, firstName, lastName, email, password, image, title, description, availability) VALUES ('{$user_name}', '{$first_Name}', '{$last_Name}', '{$con_email}', '{$pw}', '{$con_title}', '{$desc}', '{$avl}')";
             
                 $result = mysqli_query($connection, $query);
 
