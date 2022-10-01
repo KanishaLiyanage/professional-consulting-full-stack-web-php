@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2022 at 12:19 PM
+-- Generation Time: Aug 15, 2022 at 08:25 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -35,13 +35,6 @@ CREATE TABLE `admins` (
   `image` text NOT NULL,
   `isDeleted` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `admins`
---
-
-INSERT INTO `admins` (`admin_id`, `username`, `email`, `password`, `image`, `isDeleted`) VALUES
-(1, 'admin1', 'admin1@gmail.com', '123', '', 0);
 
 -- --------------------------------------------------------
 
@@ -90,18 +83,11 @@ CREATE TABLE `consultants` (
   `image` text NOT NULL,
   `title` varchar(50) NOT NULL,
   `description` longtext NOT NULL,
-  `availability` varchar(100) NOT NULL,
   `ratings` float NOT NULL,
+  `availability` varchar(100) NOT NULL,
   `createdDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `isDeleted` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `consultants`
---
-
-INSERT INTO `consultants` (`consultant_id`, `username`, `firstName`, `lastName`, `email`, `password`, `image`, `title`, `description`, `availability`, `ratings`, `createdDate`, `isDeleted`) VALUES
-(1, 'OmaleeCooray', 'Omalee', 'Cooray', 'omalee@gmail.com', '123', 'CONSULTANT-630b0c01658177.12833639.jpg', 'Brand Strategist', 'I believe that every professional should have a personal website, or what I like to call a firstnamelastname.com. In this digital space, I realized I needed to go the extra mile to be warm and approachable. I want to connect with people and I love to share advice. My personal website is my outlet for that and it’s also a place where people can quickly find out who I am.\r\n\r\nI wanted to go from being viewed as a designer for hire to being respected as an authority in the branding and design field. A personal website has helped me build that platform. While I am currently defining the additional goals that I want to accomplish with my personal brand, my website still attracts inquires for consulting, speaking and guest blog writing. A personal website sends the message that I’m available for these opportunities, and helps me connect with people on an international scale.', 'Available', 0, '2022-08-28 09:37:44', 0);
 
 -- --------------------------------------------------------
 
@@ -195,7 +181,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cart`
@@ -213,7 +199,7 @@ ALTER TABLE `chats`
 -- AUTO_INCREMENT for table `consultants`
 --
 ALTER TABLE `consultants`
-  MODIFY `consultant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `consultant_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `customers`
