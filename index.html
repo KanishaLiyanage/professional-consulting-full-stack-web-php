@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scaled=1.0">
+    <title>CONSULTANTX</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="logo">ConsultantX</h1>
+        <ul class="nav-links">
+            <li class="active"><a href="#"></a>Home</li>
+            <li><a href="#"></a>Favourite</li>
+            <li><a href="#"></a>Services</li>
+            <li><a href="#"></a>Contact</li>
+            <li class="ctn"><a href="#"></a>Logout</li>
+
+        </ul>
+        <img src="./img/menu-btn.png" alt="" class="menu-btn">
+    </nav>
+    <header>
+        <div class="header-content">
+            <h2>Meet Your Professional Consultant</h2>
+            <div class="line"></div>
+            <h1>Welcome To Your Path Of Success</h1>
+            <a href="#" class="ctn">Learn More</a>
+        </div>
+    </header>
+    <!--whychoose-->
+    <section class="whychoose">
+        <div class="title">
+            <h1>Why Choose Us...</h1>
+            <div class="line"></div>
+        </div>
+        <div class="row">
+        <div class="col">
+            <img src="./img/2.png" alt="">
+            <h4>Professional Consultants</h4>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur debitis laborum accusantium id nisi. Sunt, omnis accusantium? Fugit nihil sequi consectetur consequuntur ab magni, earum tempore repudiandae amet minima mollitia.</p>
+            <a href="#" class="ctn">Learn More</a>
+        </div>
+        <div class="col">
+            <img src="./img/3.png" alt="">
+            <h4>Best Packages</h4>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur debitis laborum accusantium id nisi. Sunt, omnis accusantium? Fugit nihil sequi consectetur consequuntur ab magni, earum tempore repudiandae amet minima mollitia.</p>
+            <a href="#" class="ctn">Learn More</a>
+        </div>
+        </div>
+    </section>
+    <section class="services">
+<div class="services-content">
+    <h1>Our Services</h1>
+    <div class="line"></div>
+    <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, eum accusantium ipsum iure, iusto magni veniam, voluptatem totam corporis provident ex. Corporis sed atque suscipit aperiam obcaecati ullam eius numquam?</P>
+    <a href="#" class="ctn">Learn More</a>
+</div>
+    </section>
+    <section class="experts">
+        <div class="row">
+            <div class="col content-col">
+                <h1>OUR EXPERTS</h1>
+                <div class="line"></div>
+                <P>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim incidunt adipisci quidem culpa nostrum odit voluptates quia laborum numquam provident autem officiis officia odio sint inventore veritatis, quisquam dicta doloribus!</P>
+                <a href="#" class="ctn">Learn More</a>
+
+            </div>
+            <div class="col image-col">
+                <div class="image-gallery">
+                    <img src="./img/5.png" alt="">
+                    <img src="./img/6.png" alt="">
+                    <img src="./img/7.png" alt="">
+                    <img src="./img/8.png" alt="">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="footer">
+        <p>Group H cmis 3214 ,| tel 0000000000</p>
+        <p>Copyright c 2020 outdoor Adventure</p>
+    </section>
+    <script>
+        const menuBtn = document.querySelector('.menu-btn')
+        const navlinks = document.querySelector('.nav-links')
+
+        menuBtn.addEventListener('click',()=>{
+            navlinks.classList.toggle('mobile-menu')
+        })
+    </script>
+</body>
+</html>
