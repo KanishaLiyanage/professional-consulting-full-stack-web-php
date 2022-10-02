@@ -64,6 +64,7 @@
             <a href="#" class="ctn">Learn More</a>
         </div>
     </section>
+
     <section class="experts">
         <div class="row">
             <div class="col content-col">
@@ -75,19 +76,52 @@
             </div>
             <div class="col image-col">
                 <div class="image-gallery">
-                    <img src="../assets/images/client-side/5.png" alt="">
-                    <img src="../assets/images/client-side/6.png" alt="">
-                    <img src="../assets/images/client-side/7.png" alt="">
-                    <img src="../assets/images/client-side/8.png" alt="">
+
+                    <?php
+
+                    $query = "SELECT * FROM consultants WHERE isDeleted = 0";
+
+                    $result = mysqli_query($connection, $query);
+
+                    if ($result) { ?>
+
+                        <?php
+
+                        if (mysqli_num_rows($result) > 0) { ?>
+
+
+
+                            <?php while ($record = mysqli_fetch_array($result)) {
+
+                                $_GET['con_id'] = $record['consultant_id'];
+
+                            ?>
+
+                                <a href="consultantProfile.php?con_id=<?= $_GET['con_id'] ?>">
+
+                                    <img src="../../assets/uploads/profile_pics/<?php echo $record['image']; ?>" alt="<?php echo $record['firstName']; ?>">
+
+                                </a>
+
+                            <?php } ?>
+
+                    <?php }
+                    } else {
+                        echo "DB failed!";
+                    }
+
+                    ?>
 
                 </div>
             </div>
         </div>
     </section>
+
     <section class="footer">
-        <p>Group H cmis 3214 ,| tel 0000000000</p>
-        <p>Copyright c 2020 outdoor Adventure</p>
+        <p>Group F CMIS 3214</p>
+        <p>Copyright c 2022</p>
     </section>
+
     <script>
         const menuBtn = document.querySelector('.menu-btn')
         const navlinks = document.querySelector('.nav-links')
@@ -103,24 +137,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h1>Home Page</h1>
-    <a href="index.php">back</a>
-    <br>
-    <a href="../client-side-web/components/logout.php">logout</a>
 
     <?php
 
