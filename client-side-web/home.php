@@ -131,7 +131,6 @@
         })
     </script>
 
-
     <?php
 
     $query = "SELECT * FROM consultants
