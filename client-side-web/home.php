@@ -14,7 +14,6 @@
 
 <body>
 
-
     <nav class="navbar">
         <h1 class="logo">ConsultantX</h1>
         <ul class="nav-links">
