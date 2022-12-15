@@ -1,6 +1,17 @@
 <?php session_start(); ?>
 <?php require_once('../connection/dbconnection.php'); ?>
 
+<?php
+
+if (!isset($_SESSION['ad_id'])) {
+    header("Location: adminLogin.php");
+}
+
+if (!isset($_SESSION['ad_id'])) {
+    echo "Admin ID pass failed!";
+}
+
+?>
 
 <?php
 
@@ -18,20 +29,20 @@ if ($customers) {
     while ($customer = mysqli_fetch_assoc($customers)) {
 
         $_GET['customer_id'] = $customer['customer_id'];
-        $_GET['username'] = $customer['username'];
-        $_GET['firstName'] = $customer['firstName'];
-        $_GET['lastName'] = $customer['lastName'];
+        $_GET['customerUsername'] = $customer['customerUsername'];
+        $_GET['customerFirstName'] = $customer['customerFirstName'];
+        $_GET['customerLastName'] = $customer['customerLastName'];
         $_GET['title'] = $customer['profession'];
         $_GET['ratings'] = $customer['package'];
 
         $customer_list .= "<tbody>";
         $customer_list .= "<tr>";
         $customer_list .= "<td class=\"text-left\"> {$customer['customer_id']} </td>";
-        $customer_list .= "<td class=\"text-left\"> {$customer['username']} </td>";
+        $customer_list .= "<td class=\"text-left\"> {$customer['customerUsername']} </td>";
         $customer_list .= "<td class=\"text-left\"> {$customer['profession']} </td>";
         $customer_list .= "<td class=\"text-left\"> {$customer['package']} </td>";
         // $customer_list .= "<td class=\"text-left\"> <a href=\"item.php?con_id={$_GET['customer_id']}&con_title={$_GET['title']}&con_name={$_GET['firstName']}\"> go to this customer </a> </td>";
-        $customer_list .= "<td class=\"text-left\"> <a href=\"components/delete_item.php?con_id={$customer['customer_id']}\" onclick = \"return confirm('Are you sure to delete?');\"> Delete </a> </td>";
+        $customer_list .= "<td class=\"text-left\"> <a href=\"components/delete_customer.php?cus_id={$customer['customer_id']}\" onclick = \"return confirm('Are you sure to delete?');\"> Delete </a> </td>";
         $customer_list .= "</tr>";
         $customer_list .= "</tbody>";
     }
@@ -41,7 +52,6 @@ if ($customers) {
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,13 +59,13 @@ if ($customers) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/testClients.css">
+    <link rel="stylesheet" href="./css/clients.css">
     <title>ConsultPro | Admin Dashboard</title>
 </head>
 
 <body>
 
-    <?php require_once('./components/sideMenu.php'); ?>
+    <?php require_once('./components/sideMenuAdmin.php'); ?>
 
     <div class="container">
         <div class="header">
@@ -63,13 +73,6 @@ if ($customers) {
                 <div class="search">
                     <input type="text" placeholder="Search..">
                     <button type="submit"><img src="img/search.png" alt=""></button>
-                </div>
-                <div class="user">
-                    <a href="#" class="btn">Add New</a>
-                    <img src="img/notifications.png" alt="">
-                    <div class="img-case">
-                        <img src="img/user.png" alt="">
-                    </div>
                 </div>
             </div>
         </div>

@@ -23,7 +23,7 @@
     <?php
 
     $query = "SELECT * FROM consultants
-      WHERE isDeleted = 0";
+              WHERE isDeleted = 0";
 
     $result = mysqli_query($connection, $query);
 
@@ -48,10 +48,10 @@
                     <div class="consultant-card">
                         <a class="linkedPage" href="consultantProfile.php?con_id=<?= $_GET['con_id'] ?>">
                             <div class="consultant-tumb">
-                                <img class="itemImage" src="../../assets/uploads/profile_pics/<?php echo $record['image']; ?>" alt="<?php echo $record['firstName']; ?>">
+                                <img class="itemImage" src="../../assets/uploads/profile_pics/<?php echo $record['image']; ?>" alt="<?php echo $record['consultantFirstName']; ?>">
                             </div>
                             <div class="consultant-details">
-                                <span class="consultant-catagory"><?php echo $record['firstName'] . " " . $record['lastName'] ?></span>
+                                <span class="consultant-catagory"><?php echo $record['consultantFirstName'] . " " . $record['consultantLastName'] ?></span>
                                 <div class="buyBtnBox"> <a class="buyBtn" href="consultantProfile.php?con_id=<?= $_GET['con_id'] ?>"> Hire </a> </div>
                                 <h4>
                                     <p><?php echo $record['title'] ?></p>

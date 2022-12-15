@@ -1,5 +1,4 @@
 <?php session_start(); ?>
-
 <?php require_once('../connection/dbconnection.php'); ?>
 
 <?php
@@ -11,8 +10,8 @@ if (!isset($_SESSION['con_id'])) {
 if (!isset($_SESSION['con_id'])) {
     echo "Consultant ID pass failed!";
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,13 +19,13 @@ if (!isset($_SESSION['con_id'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/testIndex.css">
+    <link rel="stylesheet" href="./css/dashboardMain.css">
     <title>ConsultPro | Consultant Dashboard</title>
 </head>
 
 <body>
 
-    <?php require_once('./components/sideMenu.php'); ?>
+    <?php require_once('./components/sideMenuConsultant.php'); ?>
 
     <div class="container">
         <div class="header">
@@ -61,29 +60,11 @@ if (!isset($_SESSION['con_id'])) {
                         <img src="img/teachers.png" alt="">
                     </div>
                 </div>
-                <div class="card">
-                    <div class="box">
-                        <h1>5</h1>
-                        <h3>Companies</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="img/schools.png" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <h1>350000</h1>
-                        <h3>Income</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="img/income.png" alt="">
-                    </div>
-                </div>
             </div>
             <div class="content-2">
                 <div class="recent-payments">
                     <div class="title">
-                        <h2>Recent Payments</h2>
+                        <h2>Recent Clients</h2>
                     </div>
                     <table>
                         <tr>
@@ -128,39 +109,6 @@ if (!isset($_SESSION['con_id'])) {
                             <td>$120</td>
                             <td><a href="#" class="btn">Delete</a></td>
                         </tr>
-                    </table>
-                </div>
-                <div class="new-students">
-                    <div class="title">
-                        <h2>New Clients</h2>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Profile</th>
-                            <th>Name</th>
-                            <th>option</th>
-                        </tr>
-                        <tr>
-                            <td><img src="img/user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="img/info.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src="img/user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="img/info.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src="img/user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="img/info.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src="img/user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="img/info.png" alt=""></td>
-                        </tr>
-
                     </table>
                 </div>
             </div>
