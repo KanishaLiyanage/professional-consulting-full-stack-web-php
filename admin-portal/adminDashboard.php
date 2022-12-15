@@ -33,7 +33,7 @@ if (!isset($_SESSION['ad_id'])) {
             <div class="nav">
                 <div class="search">
                     <input type="text" placeholder="Search..">
-                    <button type="submit"><img src="img/search.png" alt=""></button>
+                    <button type="submit"><img src="../assets/images/admin-side/search.png" alt=""></button>
                 </div>
                 <div class="user">
                     <div class="img-case">
@@ -49,7 +49,7 @@ if (!isset($_SESSION['ad_id'])) {
                         <h3>Clients</h3>
                     </div>
                     <div class="icon-case">
-                        <img src="img/students.png" alt="">
+                        <img src="../assets/images/admin-side/students.png" alt="">
                     </div>
                 </div>
                 <div class="card">
@@ -58,7 +58,7 @@ if (!isset($_SESSION['ad_id'])) {
                         <h3>Consultants</h3>
                     </div>
                     <div class="icon-case">
-                        <img src="img/teachers.png" alt="">
+                        <img src="../assets/images/admin-side/teachers.png" alt="">
                     </div>
                 </div>
                 <div class="card">
@@ -67,7 +67,7 @@ if (!isset($_SESSION['ad_id'])) {
                         <h3>Companies</h3>
                     </div>
                     <div class="icon-case">
-                        <img src="img/schools.png" alt="">
+                        <img src="../assets/images/admin-side/schools.png" alt="">
                     </div>
                 </div>
                 <div class="card">
@@ -76,7 +76,7 @@ if (!isset($_SESSION['ad_id'])) {
                         <h3>Income</h3>
                     </div>
                     <div class="icon-case">
-                        <img src="img/income.png" alt="">
+                        <img src="../assets/images/admin-side/income.png" alt="">
                     </div>
                 </div>
             </div>
@@ -141,24 +141,24 @@ if (!isset($_SESSION['ad_id'])) {
                             <th>option</th>
                         </tr>
                         <tr>
-                            <td><img src="img/user.png" alt=""></td>
+                            <td><img src="../assets/images/admin-side/user.png" alt=""></td>
                             <td>John Steve Doe</td>
                             <td><img src="img/info.png" alt=""></td>
                         </tr>
                         <tr>
-                            <td><img src="img/user.png" alt=""></td>
+                            <td><img src="../assets/images/admin-side/user.png" alt=""></td>
                             <td>John Steve Doe</td>
-                            <td><img src="img/info.png" alt=""></td>
+                            <td><img src="../assets/images/admin-side/info.png" alt=""></td>
                         </tr>
                         <tr>
-                            <td><img src="img/user.png" alt=""></td>
+                            <td><img src="../assets/images/admin-side/user.png" alt=""></td>
                             <td>John Steve Doe</td>
-                            <td><img src="img/info.png" alt=""></td>
+                            <td><img src="../assets/images/admin-side/info.png" alt=""></td>
                         </tr>
                         <tr>
-                            <td><img src="img/user.png" alt=""></td>
+                            <td><img src="../assets/images/admin-side/user.png" alt=""></td>
                             <td>John Steve Doe</td>
-                            <td><img src="img/info.png" alt=""></td>
+                            <td><img src="../assets/images/admin-side/info.png" alt=""></td>
                         </tr>
 
                     </table>

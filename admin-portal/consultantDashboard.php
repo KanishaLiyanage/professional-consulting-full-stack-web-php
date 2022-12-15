@@ -32,7 +32,7 @@ if (!isset($_SESSION['con_id'])) {
             <div class="nav">
                 <div class="search">
                     <input type="text" placeholder="Search..">
-                    <button type="submit"><img src="img/search.png" alt=""></button>
+                    <button type="submit"><img src="../assets/images/admin-side/search.png" alt=""></button>
                 </div>
                 <div class="user">
                     <div class="img-case">
@@ -48,7 +48,7 @@ if (!isset($_SESSION['con_id'])) {
                         <h3>Clients</h3>
                     </div>
                     <div class="icon-case">
-                        <img src="img/students.png" alt="">
+                        <img src="../assets/images/admin-side/students.png" alt="">
                     </div>
                 </div>
                 <div class="card">
@@ -57,7 +57,7 @@ if (!isset($_SESSION['con_id'])) {
                         <h3>Consultants</h3>
                     </div>
                     <div class="icon-case">
-                        <img src="img/teachers.png" alt="">
+                        <img src="../assets/images/admin-side/teachers.png" alt="">
                     </div>
                 </div>
             </div>
