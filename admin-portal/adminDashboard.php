@@ -1,18 +1,18 @@
 <?php session_start(); ?>
-
 <?php require_once('../connection/dbconnection.php'); ?>
 
 <?php
 
-if (!isset($_SESSION['con_id'])) {
-    header("Location: consultantLogin.php");
+if (!isset($_SESSION['ad_id'])) {
+    header("Location: adminLogin.php");
 }
 
-if (!isset($_SESSION['con_id'])) {
-    echo "Consultant ID pass failed!";
+if (!isset($_SESSION['ad_id'])) {
+    echo "Admin ID pass failed!";
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +21,7 @@ if (!isset($_SESSION['con_id'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/testIndex.css">
-    <title>ConsultPro | Consultant Dashboard</title>
+    <title>ConsultPro | Admin Dashboard</title>
 </head>
 
 <body>
@@ -169,5 +169,3 @@ if (!isset($_SESSION['con_id'])) {
 </body>
 
 </html>
-
-<?php mysqli_close($connection); ?>

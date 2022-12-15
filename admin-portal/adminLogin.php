@@ -22,14 +22,12 @@ if (isset($_POST['login'])) {
             $admin = mysqli_fetch_assoc($result);
             $_SESSION['ad_id'] = $admin['admin_id'];
             $_SESSION['ad_username'] = $admin['username'];
-            header("Location: dashboard.php");
+            header("Location: adminDashboard.php");
         }
     } else {
         echo "Login Failed!";
     }
     // echo "Logged in successfuly!";
-} else {
-    echo "Failed to Login!";
 }
 
 ?>
@@ -41,26 +39,24 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
-    <link rel="stylesheet" href="css/signin.css">
+    <title>ConsultPro | Login Admin</title>
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
 
-    <a href="index.php"> back </a>
+    <form action="adminLogin.php" method="post">
 
-    <div class="login-page">
-        <p>Login as an Admin</p>
-        <div class="form">
-            <form class="login-form" action="adminLogin.php" method="POST" autocomplete="off">
-                <label for="email">Email</label><br>
-                <input type="email" name="email" placeholder="email" required><br>
-                <label for="password">Password</label><br>
-                <input type="password" name="pw" placeholder="password" required><br>
-                <button type="submit" name="login">login</button>
-            </form>
-        </div>
-    </div>
+        <h2>LOGIN AS ADMIN</h2>
+        <label>Email</label>
+        <input type="text" name="email" placeholder="email" required><br>
+
+        <label>Password</label>
+        <input type="password" name="pw" placeholder="password" required><br>
+
+        <button type="submit" name="login">Login</button>
+
+    </form>
 
 </body>
 

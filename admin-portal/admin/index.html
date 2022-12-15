@@ -1,18 +1,3 @@
-<?php session_start(); ?>
-
-<?php require_once('../connection/dbconnection.php'); ?>
-
-<?php
-
-if (!isset($_SESSION['con_id'])) {
-    header("Location: consultantLogin.php");
-}
-
-if (!isset($_SESSION['con_id'])) {
-    echo "Consultant ID pass failed!";
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,14 +5,22 @@ if (!isset($_SESSION['con_id'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/testIndex.css">
-    <title>ConsultPro | Consultant Dashboard</title>
+    <link rel="stylesheet" href="index.css">
+    <title>Admin Panel</title>
 </head>
 
 <body>
-
-    <?php require_once('./components/sideMenu.php'); ?>
-
+    <div class="side-menu">
+        <div class="brand-name">
+            <h1>Brand</h1>
+        </div>
+        <ul>
+            <li><img src="img/dashboard (2).png" alt="">&nbsp; <span>Dashboard</span> </li>
+            <li><a class="client" href="clients.html"><img src="img/reading-book (1).png" alt="">&nbsp;<span>Clients</span> </a></li>
+            <li><a class="consultant" href="consultants.html"><img src="img/teacher2.png" alt="">&nbsp;<span>Consultants</span> </a></li>
+            <li><img src="img/settings.png" alt="">&nbsp;<span>Logout</span> </li>
+        </ul>
+    </div>
     <div class="container">
         <div class="header">
             <div class="nav">
@@ -36,7 +29,10 @@ if (!isset($_SESSION['con_id'])) {
                     <button type="submit"><img src="img/search.png" alt=""></button>
                 </div>
                 <div class="user">
+                    <a href="#" class="btn">Add New</a>
+                    <img src="img/notifications.png" alt="">
                     <div class="img-case">
+                        <img src="img/user.png" alt="">
                     </div>
                 </div>
             </div>
@@ -84,6 +80,7 @@ if (!isset($_SESSION['con_id'])) {
                 <div class="recent-payments">
                     <div class="title">
                         <h2>Recent Payments</h2>
+                        <a href="#" class="btn">View All</a>
                     </div>
                     <table>
                         <tr>
@@ -133,6 +130,7 @@ if (!isset($_SESSION['con_id'])) {
                 <div class="new-students">
                     <div class="title">
                         <h2>New Clients</h2>
+                        <a href="#" class="btn">View All</a>
                     </div>
                     <table>
                         <tr>
@@ -169,5 +167,3 @@ if (!isset($_SESSION['con_id'])) {
 </body>
 
 </html>
-
-<?php mysqli_close($connection); ?>

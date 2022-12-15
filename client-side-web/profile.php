@@ -42,7 +42,7 @@
             <?php while ($record = mysqli_fetch_array($result)) {
 
                 $_GET['cus_id'] = $record['customer_id'];
-                
+
 
             ?>
 
@@ -100,11 +100,11 @@
                                     </div>
                                     <br>
                                     <div class="col-md-12">
-                                        <label class="labels">Account Created Date</label>
+                                        <label class="labels">Account Created On</label>
                                         <p><?php echo $record['createdDate'] ?></p>
                                     </div><br>
                                     <div class="col-md-12">
-                                        <label class="labels">Additional Details</label>
+                                        <label class="labels">Transaction Details</label>
                                     </div>
                                 </div>
                             </div>
