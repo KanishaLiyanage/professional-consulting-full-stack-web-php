@@ -58,23 +58,9 @@ $pkg = "";
 
             ?>
 
-                <?php
-
-                $updateQuery = "UPDATE customers
-                                SET firstName = '{$fname}',
-                                lastName = '{$lname}',
-                                email = '{$email}',
-                                profession = '{$prof}',
-                                mobileNo = '{$mNo}',
-                                package = '{$pkg}',
-                                WHERE customer_id = 1
-                                LIMIT 1";
-
-                ?>
-
                 <div class="profileContainer">
 
-                    <form action="" method="post">
+                    <form action="../client-side-web/components/updateProfile.php" method="post">
 
                         <div class="container rounded bg-white mt-5 mb-5">
                             <div class="row">
@@ -93,24 +79,24 @@ $pkg = "";
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-md-6"><label class="labels">First Name</label>
-                                                <input type="text" class="form-control" placeholder="first name" value="<?php echo $record['firstName'] ?>">
+                                                <input type="text" name="fname" class="form-control" placeholder="first name" value="<?php echo $fname ?>">
                                             </div>
                                             <div class="col-md-6"><label class="labels">Last Name</label>
-                                                <input type="text" class="form-control" value="<?php echo $record['lastName'] ?>" placeholder="last name">
+                                                <input type="text" name="lname" class="form-control" value="<?php echo $lname ?>" placeholder="last name">
                                             </div>
                                         </div>
                                         <div class="row mt-3">
                                             <div class="col-md-12"><label class="labels">Email</label>
-                                                <input type="email" class="form-control" placeholder="enter email" value="<?php echo $record['email'] ?>">
+                                                <input type="email" name="email" class="form-control" placeholder="enter email" value="<?php echo $email ?>">
                                             </div>
                                             <div class="col-md-12"><label class="labels">Mobile Number</label>
-                                                <input type="text" class="form-control" placeholder="enter phone number" value="<?php echo $record['mobileNo'] ?>">
+                                                <input type="text" name="mNo" class="form-control" placeholder="enter phone number" value="<?php echo $record['mobileNo'] ?>">
                                             </div>
                                             <div class="col-md-12"><label class="labels">Profession</label>
-                                                <input type="text" class="form-control" placeholder="enter profession" value="<?php echo $record['profession'] ?>">
+                                                <input type="text" name="prof" class="form-control" placeholder="enter profession" value="<?php echo $prof ?>">
                                             </div>
                                             <div class="col-md-12"><label class="labels">Change Package</label>
-                                                <input type="text" class="form-control" placeholder="package" value="<?php echo $record['package'] ?>">
+                                                <input type="text" name="pkg" class="form-control" placeholder="package" value="<?php echo $pkg ?>">
                                             </div>
                                         </div>
 
@@ -121,7 +107,7 @@ $pkg = "";
                                         <div class="d-flex justify-content-between align-items-center experience">
                                             <span>Update Profile</span>
                                         </div><br>
-                                        <button class="btn btn-primary profile-button" type="button">Save Profile</button>
+                                        <input class="btn btn-primary profile-button" type="submit" name="update" value="Save Profile">
                                     </div>
                                 </div>
                             </div>
