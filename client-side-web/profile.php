@@ -1,7 +1,15 @@
 <?php session_start(); ?>
 <?php require_once('../connection/dbconnection.php'); ?>
 
+<?php
 
+if (!isset($_SESSION['cus_id'])) {
+    header("Location: userLogin.php");
+}
+
+$customer_id = $_SESSION['cus_id'];
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +34,7 @@
 
     $query = "SELECT * FROM customers
               WHERE
-              customer_id = 1
+              customer_id = '{$customer_id}'
               AND
               isDeleted = 0
               LIMIT 1";
@@ -52,7 +60,7 @@
                         <div class="row">
                             <div class="col-md-3 border-right">
                                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                                    <img class="rounded-circle mt-5" width="150px" src="../assets/uploads/client_profile_pics/<?php echo $record['image'];?>" alt="<?php echo $record['image'];?>">
+                                    <img class="rounded-circle mt-5" width="150px" src="../assets/uploads/client_profile_pics/<?php echo $record['image']; ?>" alt="<?php echo $record['image']; ?>">
                                     <span class="font-weight-bold"><?php echo $record['customerUsername'] ?></span>
                                     <span class="text-black-50"><?php echo $record['customerEmail'] ?></span>
                                     <span> </span>

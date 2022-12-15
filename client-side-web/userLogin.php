@@ -1,4 +1,35 @@
+<?php session_start(); ?>
 <?php require_once('../connection/dbconnection.php'); ?>
+
+<?php
+
+if (isset($_POST['login'])) {
+    $uName = mysqli_real_escape_string($connection, $_POST['uName']);
+    $password = mysqli_real_escape_string($connection, $_POST['password']);
+
+    $query = "SELECT * FROM customers
+              WHERE customerUsername = '{$uName}'
+              AND
+              password = '{$password}'
+              AND
+              isDeleted = 0
+              LIMIT 1";
+
+    $result = mysqli_query($connection, $query);
+
+    if ($result) {
+        if (mysqli_num_rows($result) == 1) {
+            $customer = mysqli_fetch_assoc($result);
+            $_SESSION['cus_id'] = $customer['customer_id'];
+            header("Location: home.php");
+        }
+    } else {
+        echo "Login Failed!";
+    }
+    // echo "Logged in successfuly!";
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,19 +44,19 @@
 
 <body>
 
-    <form action="../client-side-web/components/login.php" method="post">
+    <form action="./userLogin.php" method="post">
 
         <h2>LOGIN</h2>
         <?php if (isset($_GET['error'])) { ?>
             <p class="error"><?php echo $_GET['error']; ?></p>
         <?php } ?>
         <label>Username</label>
-        <input type="text" name="uname" placeholder="Username"><br>
+        <input type="text" name="uName" placeholder="Username" required><br>
 
         <label>Password</label>
-        <input type="password" name="password" placeholder="Password"><br>
+        <input type="password" name="password" placeholder="Password" required><br>
 
-        <button type="submit">Login</button>
+        <button type="submit" name="login">Login</button>
         <a href="./register.php" class="ca">Create an account</a>
 
     </form>

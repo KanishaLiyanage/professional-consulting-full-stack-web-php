@@ -3,6 +3,14 @@
 
 <?php
 
+if (!isset($_SESSION['cus_id'])) {
+    header("Location: ../userLogin.php");
+}
+
+?>
+
+<?php
+
 $package_type = $_GET['pkg'];
 
 ?>

@@ -16,9 +16,9 @@
     <section>
 
         <header>
-            <h2><a href="" class="logo">logo</a></h2>
+            <h2><a href="" class="logo">ConsultPro</a></h2>
             <div class="navigation">
-                <a href="">Register</a>
+                <a href="./register.php">Register</a>
                 <a href="./userLogin.php">Login</a>
             </div>
         </header>

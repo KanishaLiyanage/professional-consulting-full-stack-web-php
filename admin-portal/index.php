@@ -1,5 +1,4 @@
 <?php session_start(); ?>
-
 <?php require_once('../connection/dbconnection.php'); ?>
 
 <!DOCTYPE html>
@@ -12,7 +11,6 @@
     <link rel="stylesheet" href="./css/landing.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <title>ConsultPro | Dashboard</title>
-
 </head>
 
 <body>

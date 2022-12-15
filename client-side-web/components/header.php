@@ -7,5 +7,6 @@
         <li><a href="consultantList.php">Consultants</a></li>
         <li><a href="packages.php">Packages</a></li>
         <li><a href="profile.php">Profile</a></li>
+        <li><a href="./components/logout.php">Logout</a></li>
     </ul>
 </nav>

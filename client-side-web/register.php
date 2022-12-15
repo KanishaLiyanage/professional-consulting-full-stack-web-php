@@ -1,4 +1,66 @@
+<?php session_start(); ?>
 <?php require_once('../connection/dbconnection.php'); ?>
+
+<?php
+
+if (isset($_POST['submit']) && isset($_FILES['image'])) {
+
+    $image_name = $_FILES['image']['name'];
+    $image_size = $_FILES['image']['size'];
+    $tmp_name = $_FILES['image']['tmp_name'];
+    $errors = $_FILES['image']['error'];
+
+    if ($errors === 0) {
+
+        if ($image_size > 12500000) {
+
+            echo "File is too large!";
+        } else {
+
+            $img_extension = pathinfo($image_name, PATHINFO_EXTENSION);
+            $img_ex_lc = strtolower($img_extension);
+
+            $allowed_extensions = array("jpg", "jpeg");
+
+            if (in_array($img_ex_lc, $allowed_extensions)) {
+
+                $new_img_name = uniqid("CUSTOMER_IMG-", true) . "." . $img_ex_lc;
+                $img_upload_path = '../assets/uploads/client_profile_pics/' . $new_img_name;
+
+                move_uploaded_file($tmp_name, $img_upload_path);
+
+                $firstname = mysqli_real_escape_string($connection, $_POST['firstname']);
+                $lastname = mysqli_real_escape_string($connection, $_POST['lastname']);
+                $uname = mysqli_real_escape_string($connection, $_POST['uname']);
+                $email = mysqli_real_escape_string($connection, $_POST['email']);
+                $password = mysqli_real_escape_string($connection, $_POST['password']);
+                $profession = mysqli_real_escape_string($connection, $_POST['profession']);
+                $mobileNo = mysqli_real_escape_string($connection, $_POST['mobileNo']);
+
+                //$encrypted_password = sha1($upw);
+
+                $query = "INSERT INTO customers(customerFirstName, customerLastName, customerUsername, customerEmail, password, image, profession, customerMobileNo)
+                          VALUES ('{$firstname}','{$lastname}','{$uname}','{$email}','{$password}','{$new_img_name}','{$profession}','{$mobileNo}')";
+
+                $result = mysqli_query($connection, $query);
+
+                if ($result) {
+                    // $customer = mysqli_fetch_assoc($result);
+                    // $_SESSION['cus_id'] = $customer['customer_id'];
+                    header("Location: ./userLogin.php");
+                }
+            } else {
+                echo "File extension can not be allowed! Please upload jpg files only.";
+            }
+        }
+    } else {
+        echo "Error in Image file!";
+    }
+} else {
+    echo "There is an error in your inputs!";
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,76 +77,37 @@
 
     <div class="registerCard">
 
-        <form action="signup-check.php" method="post">
+        <form action="./register.php" method="post" enctype="multipart/form-data">
 
             <h2 class="title">REGISTER</h2>
 
-            <?php if (isset($_GET['error'])) { ?>
-                <p class="error"><?php echo $_GET['error']; ?></p>
-            <?php } ?>
-
-            <?php if (isset($_GET['success'])) { ?>
-                <p class="success"><?php echo $_GET['success']; ?></p>
-            <?php } ?>
-
             <label>First Name</label>
-            <?php if (isset($_GET['firstname'])) { ?>
-                <input type="text" name="firstname" placeholder="First Name" value="<?php echo $_GET['firstname']; ?>"><br>
-            <?php } else { ?>
-                <input type="text" name="firstname" placeholder="First Name"><br>
-            <?php } ?>
+            <input type="text" name="firstname" placeholder="First Name"><br>
 
             <label>Last Name</label>
-            <?php if (isset($_GET['lastname'])) { ?>
-                <input type="text" name="lastname" placeholder="Last Name" value="<?php echo $_GET['lastname']; ?>"><br>
-            <?php } else { ?>
-                <input type="text" name="lastname" placeholder="Last Name"><br>
-            <?php } ?>
+            <input type="text" name="lastname" placeholder="Last Name"><br>
 
             <label>User Name</label>
-            <?php if (isset($_GET['uname'])) { ?>
-                <input type="text" name="uname" placeholder="User Name" value="<?php echo $_GET['uname']; ?>"><br>
-            <?php } else { ?>
-                <input type="text" name="uname" placeholder="User Name"><br>
-            <?php } ?>
+            <input type="text" name="uname" placeholder="User Name"><br>
 
             <label>Mobile No</label>
-            <?php if (isset($_GET['mobileNo'])) { ?>
-                <input type="text" name="mobileNo" placeholder="Mobile no" value="<?php echo $_GET['mobileNo']; ?>"><br>
-            <?php } else { ?>
-                <input type="text" name="mobileNo" placeholder="Mobile no"><br>
-            <?php } ?>
+            <input type="text" name="mobileNo" placeholder="Mobile no"><br>
 
             <label>Email</label>
-            <?php if (isset($_GET['email'])) { ?>
-                <input type="email" name="email" placeholder="User Email" value="<?php echo $_GET['email']; ?>"><br>
-            <?php } else { ?>
-                <input type="email" name="email" placeholder="User Email"><br>
-            <?php } ?>
-
+            <input type="email" name="email" placeholder="User Email"><br>
 
             <label>Profession</label>
-            <?php if (isset($_GET['profession'])) { ?>
-                <input type="text" name="profession" placeholder="Enter the Profession" value="<?php echo $_GET['profession']; ?>"><br>
-            <?php } else { ?>
-                <input type="text" name="profession" placeholder="profession"><br>
-            <?php } ?>
+            <input type="text" name="profession" placeholder="profession"><br>
 
             <label>Upload Profile Picture</label>
-            <?php if (isset($_GET['image'])) { ?>
-                <input type="file" name="image" placeholder="Upload photo" value="<?php echo $_GET['image']; ?>"><br>
-            <?php } else { ?>
-                <input type="file" name="image" placeholder="Upload photo"><br>
-            <?php } ?>
+            <input type="file" name="image" placeholder="Upload photo"><br>
 
             <label>Password</label>
             <input type="password" name="password" placeholder="Password"><br>
 
-            <label>Reenter Password</label>
-            <input type="password" name="reenter password" placeholder="Re_Password"><br>
+            <input type="submit" name="submit" value="Sign Up">
 
-            <button type="submit">Sign Up</button>
-            <a href="Loginindex.php" class="ca">Already have an account?</a>
+            <a href="userLogin.php" class="ca">Already have an account?</a>
         </form>
 
     </div>

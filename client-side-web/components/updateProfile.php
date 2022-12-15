@@ -3,6 +3,14 @@
 
 <?php
 
+if (!isset($_SESSION['cus_id'])) {
+    header("Location: ../userLogin.php");
+}
+
+?>
+
+<?php
+
 if (isset($_POST['update'])) {
 
     $fname = mysqli_real_escape_string($connection, $_POST['fname']);

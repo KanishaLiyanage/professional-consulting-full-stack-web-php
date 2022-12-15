@@ -3,13 +3,23 @@
 
 <?php
 
+if (!isset($_SESSION['cus_id'])) {
+    header("Location: ../userLogin.php");
+}
+
+$customer_id = $_SESSION['cus_id'];
+
+?>
+
+<?php
+
 if (isset($_POST['submit'])) {
 
     $pkg = mysqli_real_escape_string($connection, $_POST['package']);
     
     $query = "SELECT * FROM customers
               WHERE
-              customer_id = 1";
+              customer_id = '{$customer_id}'";
 
     $customers = mysqli_query($connection, $query);
 
@@ -29,7 +39,7 @@ if (isset($_POST['submit'])) {
                             customerMobileNo = '{$mNo}',
                             package = '{$pkg}'
                             WHERE
-                            customer_id = 1
+                            customer_id = '{$customer_id}'
                             LIMIT 1";
 
             $result = mysqli_query($connection, $updateQuery);
