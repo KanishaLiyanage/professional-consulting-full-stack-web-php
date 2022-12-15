@@ -49,11 +49,11 @@ $pkg = "";
 
             <?php while ($record = mysqli_fetch_array($result)) {
 
-                $fname = $record['firstName'];
-                $lname = $record['lastName'];
-                $email = $record['email'];
+                $fname = $record['customerFirstName'];
+                $lname = $record['customerLastName'];
+                $email = $record['customerEmail'];
                 $prof = $record['profession'];
-                $mNo = $record['mobileNo'];
+                $mNo = $record['customerMobileNo'];
                 $pkg = $record['package'];
 
             ?>
@@ -67,8 +67,8 @@ $pkg = "";
                                 <div class="col-md-3 border-right">
                                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                         <img class="rounded-circle mt-5" width="150px" src="../assets/uploads/client_profile_pics/<?php echo $record['image']; ?>" alt="<?php echo $record['image']; ?>">
-                                        <span class="font-weight-bold"><?php echo $record['username'] ?></span>
-                                        <span class="text-black-50"><?php echo $record['email'] ?></span>
+                                        <span class="font-weight-bold"><?php echo $record['customerUsername'] ?></span>
+                                        <span class="text-black-50"><?php echo $record['customerEmail'] ?></span>
                                         <span> </span>
                                     </div>
                                 </div>
@@ -90,7 +90,7 @@ $pkg = "";
                                                 <input type="email" name="email" class="form-control" placeholder="enter email" value="<?php echo $email ?>">
                                             </div>
                                             <div class="col-md-12"><label class="labels">Mobile Number</label>
-                                                <input type="text" name="mNo" class="form-control" placeholder="enter phone number" value="<?php echo $record['mobileNo'] ?>">
+                                                <input type="text" name="mNo" class="form-control" placeholder="enter phone number" value="<?php echo $mNo ?>">
                                             </div>
                                             <div class="col-md-12"><label class="labels">Profession</label>
                                                 <input type="text" name="prof" class="form-control" placeholder="enter profession" value="<?php echo $prof ?>">

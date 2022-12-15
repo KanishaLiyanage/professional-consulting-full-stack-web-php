@@ -53,8 +53,8 @@
                             <div class="col-md-3 border-right">
                                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                                     <img class="rounded-circle mt-5" width="150px" src="../assets/uploads/client_profile_pics/<?php echo $record['image'];?>" alt="<?php echo $record['image'];?>">
-                                    <span class="font-weight-bold"><?php echo $record['username'] ?></span>
-                                    <span class="text-black-50"><?php echo $record['email'] ?></span>
+                                    <span class="font-weight-bold"><?php echo $record['customerUsername'] ?></span>
+                                    <span class="text-black-50"><?php echo $record['customerEmail'] ?></span>
                                     <span> </span>
                                 </div>
                             </div>
@@ -65,18 +65,18 @@
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-md-6"><label class="labels">First Name</label>
-                                            <p><?php echo $record['firstName'] ?></p>
+                                            <p><?php echo $record['customerFirstName'] ?></p>
                                         </div>
                                         <div class="col-md-6"><label class="labels">Last Name</label>
-                                            <p><?php echo $record['lastName'] ?></p>
+                                            <p><?php echo $record['customerLastName'] ?></p>
                                         </div>
                                     </div>
                                     <div class="row mt-3">
                                         <div class="col-md-12"><label class="labels">Email</label>
-                                            <p><?php echo $record['email'] ?></p>
+                                            <p><?php echo $record['customerEmail'] ?></p>
                                         </div>
                                         <div class="col-md-12"><label class="labels">Mobile Number</label>
-                                            <p><?php echo $record['mobileNo'] ?></p>
+                                            <p><?php echo $record['customerMobileNo'] ?></p>
                                         </div>
                                         <div class="col-md-12"><label class="labels">Profession</label>
                                             <p><?php echo $record['profession'] ?></p>
@@ -85,7 +85,6 @@
                                             <p><?php echo $record['package'] ?></p>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                             <div class="col-md-4">

@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="../client-side-web/css/card.css">
     <link rel="stylesheet" href="../client-side-web/css/home.css">
     <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/apuwa.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <link rel="stylesheet" href="./css/itemCard.css">
+    <link rel="stylesheet" href="./css/h.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Our Consultants</title>
 </head>
 
@@ -28,10 +32,6 @@
     $result = mysqli_query($connection, $query);
 
     if ($result) { ?>
-
-        <div class="avlMsg">
-            <?php echo mysqli_num_rows($result) . " Consultant Available <br>"; ?>
-        </div>
 
         <?php
 

@@ -16,11 +16,11 @@ if (isset($_POST['update'])) {
 
     $updateQuery = "UPDATE customers
                     SET
-                    firstName = '{$fname}',
-                    lastName = '{$lname}',
-                    email = '{$email}',
+                    customerFirstName = '{$fname}',
+                    customerLastName = '{$lname}',
+                    customerEmail = '{$email}',
                     profession = '{$prof}',
-                    mobileNo = '{$mNo}',
+                    customerMobileNo = '{$mNo}',
                     package = '{$pkg}'
                     WHERE
                     customer_id = 1

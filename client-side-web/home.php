@@ -83,7 +83,6 @@
                 <div class="line"></div>
                 <P>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim incidunt adipisci quidem culpa nostrum odit voluptates quia laborum numquam provident autem officiis officia odio sint inventore veritatis, quisquam dicta doloribus!</P>
                 <a href="./experts.php" class="ctn">See More</a>
-
             </div>
             <div class="col image-col">
                 <div class="image-gallery">

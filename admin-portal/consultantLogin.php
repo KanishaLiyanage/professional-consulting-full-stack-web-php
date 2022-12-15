@@ -8,7 +8,7 @@ if (isset($_POST['login'])) {
     $password = mysqli_real_escape_string($connection, $_POST['pw']);
 
     $query = "SELECT * FROM consultants
-              WHERE email = '{$email}'
+              WHERE consultantEmail = '{$email}'
               AND
               password = '{$password}'
               AND
@@ -21,7 +21,7 @@ if (isset($_POST['login'])) {
         if (mysqli_num_rows($result) == 1) {
             $consultant = mysqli_fetch_assoc($result);
             $_SESSION['con_id'] = $consultant['consultant_id'];
-            $_SESSION['con_username'] = $consultant['username'];
+            $_SESSION['con_username'] = $consultant['consultantUsername'];
             header("Location: consultantDashboard.php");
         }
     } else {
