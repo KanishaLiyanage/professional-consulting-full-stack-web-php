@@ -1,23 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
 
-*
-{
+* {
     -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body
-{
+body {
     font-family: 'Roboto', sans-serif;
 }
-a
-{
+
+a {
     text-decoration: none;
 }
 
-.gridContainer{
+.gridContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     column-gap: 0px;
@@ -25,7 +23,7 @@ a
 
 }
 
-.linkedPage{
+.linkedPage {
     text-decoration: none;
 }
 
@@ -40,8 +38,8 @@ a
     transition-duration: 0.4s;
 }
 
-.consultant-card:hover{
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.01),0 17px 50px 0 rgba(0,0,0,0.19);
+.consultant-card:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.01), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 .badge {
@@ -134,33 +132,34 @@ a
     color: #fbb72c;
 }
 
-.buyBtnBox{
-    position:absolute;
+.buyBtnBox {
+    position: absolute;
     width: 60px;
     height: 25px;
     border-radius: 5px;
     background-color: #202C45;
-    cursor: pointer; /* Mouse pointer on hover */
+    cursor: pointer;
+    /* Mouse pointer on hover */
     bottom: 130px;
     left: 225px;
     transition-duration: 0.4s;
 }
 
-.buyBtn{
+.buyBtn {
     position: relative;
     color: white;
     border: none;
     font-size: 16px;
-    cursor: pointer; 
+    cursor: pointer;
     left: 16px;
     top: 2px;
     text-decoration: none;
 }
 
-.buyBtnBox:hover{
+.buyBtnBox:hover {
     background-color: #17a2b8;
 }
 
-.buyBtn:hover{
+.buyBtn:hover {
     color: white;
 }

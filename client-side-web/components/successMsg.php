@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
             $fname = $customer['customerFirstName'];
             $lname = $customer['customerLastName'];
             $email = $customer['customerEmail'];
-            $mNo = $customer['package'];
+            $mNo = $customer['customerMobileNo'];
 
             $updateQuery = "UPDATE customers
                             SET

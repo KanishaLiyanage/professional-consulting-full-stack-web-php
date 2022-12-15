@@ -3,13 +3,21 @@
 
 <?php
 
+if (!isset($_SESSION['cus_id'])) {
+    header("Location: ../userLogin.php");
+}
+
+?>
+
+<?php
+
 $consultantID = $_GET['con_id'];
-$customerID = 1;
+$customerID = $_SESSION['cus_id'];
 
 echo $consultantID;
 
 $query = "INSERT INTO orders(customer_id, consultant_id)
-          VALUES ('{$consultantID}', '{$customerID}')";
+          VALUES ('{$customerID}', '{$consultantID}')";
 
 $result = mysqli_query($connection, $query);
 
