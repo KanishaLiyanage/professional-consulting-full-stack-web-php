@@ -46,12 +46,12 @@ body {
     color: white;
 }
 
-a {
+.txt {
     text-decoration: none;
     color: #555;
 }
 
-p {
+.para {
     color: #555;
 }
 

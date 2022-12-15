@@ -112,3 +112,7 @@
 .pricing-button.is-featured:active {
     background-color: #269aff;
 }
+
+.pkgCard{
+    padding-bottom: 50px;
+}

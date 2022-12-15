@@ -20,6 +20,7 @@ $customer_id = $_SESSION['cus_id'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/profile.css">
     <link rel="stylesheet" href="./css/header.css">
+
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js">
@@ -100,7 +101,7 @@ $customer_id = $_SESSION['cus_id'];
                                     <div class="d-flex justify-content-between align-items-center experience">
                                         <span>Go To Profile Settings</span>
                                         <span class="border px-3 p-1 add-experience">
-                                            <a href="./editProfile.php">
+                                            <a class="editBtn" href="./editProfile.php">
                                                 <i class="fa fa-plus"></i>&nbsp;Edit Profile
                                             </a>
                                         </span>
@@ -112,22 +113,86 @@ $customer_id = $_SESSION['cus_id'];
                                     </div><br>
                                     <div class="col-md-12">
                                         <label class="labels">Transaction Details</label>
+
+                                        <div class="table-box">
+                                            <div class="table-row table-head">
+                                                <div class="table-cell first-cell">
+                                                    <p>Order ID</p>
+                                                </div>
+                                                <div class="table-cell second-cell">
+                                                    <p>Consultant Name</p>
+                                                </div>
+                                                <div class="table-cell third-cell">
+                                                    <p>Orderd Date</p>
+                                                </div>
+                                                <div class="table-cell fourth-cell">
+                                                    <p>Option</p>
+                                                </div>
+                                            </div>
+
+                                            <?php
+
+                                            $query = "SELECT
+                                                      orders.*,
+                                                      customers.*,
+                                                      consultants.*
+                                                      FROM
+                                                      orders
+                                                      INNER JOIN
+                                                      consultants
+                                                      ON orders.consultant_id = consultants.consultant_id
+                                                      INNER JOIN
+                                                      customers
+                                                      ON orders.customer_id = customers.customer_id
+                                                      WHERE
+                                                      orders.customer_id = '{$customer_id}'
+                                                      ORDER BY
+                                                      orders.order_id ASC";
+
+                                            $orders = mysqli_query($connection, $query);
+
+                                            if ($orders) {
+                                                while ($order = mysqli_fetch_assoc($orders)) { ?>
+
+                                                    <div class="table-row">
+                                                        <div class="table-cell first-cell">
+                                                            <p><?php echo $order['order_id'] ?></p>
+                                                        </div>
+                                                        <div class="table-cell">
+                                                            <p><?php echo $order['consultantFirstName'] ?></p>
+                                                        </div>
+                                                        <div class="table-cell last-cell">
+                                                            <p><?php echo $order['orderedDate'] ?></p>
+                                                        </div>
+                                                        <div class="table-cell fourth-cell">
+                                                            <p>Cancel</p>
+                                                        </div>
+                                                    </div>
+
+                                            <?php
+                                                }
+                                            } else {
+                                                echo "DB Failed!";
+                                            }
+
+                                            ?>
+                                            
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
-                </div>
+                <?php } ?>
 
-            <?php } ?>
-
-    <?php }
+        <?php }
     } else {
         echo "DB failed!";
     }
 
-    ?>
+        ?>
 
 </body>
 

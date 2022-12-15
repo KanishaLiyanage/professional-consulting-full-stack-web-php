@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../client-side-web/css/card.css">
     <link rel="stylesheet" href="../client-side-web/css/home.css">
     <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
     <title>ConsultPro | Home</title>
 </head>
 
@@ -64,7 +64,7 @@
                     earum tempore repudiandae amet minima mollitia.</p>
                 <a href="./bestPackages.php" class="ctn">See More</a>
             </div>
-            
+
         </div>
     </section>
     <section class="services" id="services">
@@ -89,7 +89,10 @@
 
                     <?php
 
-                    $query = "SELECT * FROM consultants WHERE isDeleted = 0";
+                    $query = "SELECT * FROM consultants
+                              WHERE
+                              isDeleted = 0
+                              LIMIT 1";
 
                     $result = mysqli_query($connection, $query);
 
@@ -98,8 +101,6 @@
                         <?php
 
                         if (mysqli_num_rows($result) > 0) { ?>
-
-
 
                             <?php while ($record = mysqli_fetch_array($result)) {
 

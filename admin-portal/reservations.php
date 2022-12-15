@@ -7,9 +7,7 @@ if (!isset($_SESSION['con_id'])) {
     header("Location: consultantLogin.php");
 }
 
-if (!isset($_SESSION['con_id'])) {
-    echo "Consultant ID pass failed!";
-}
+$consultant_id = $_SESSION['con_id'];
 
 ?>
 
@@ -25,7 +23,7 @@ $query = "SELECT
           orders
           INNER JOIN consultants ON orders.consultant_id = consultants.consultant_id
           INNER JOIN customers ON orders.customer_id = customers.customer_id
-          WHERE orders.consultant_id = 1
+          WHERE orders.consultant_id = '{$consultant_id}'
           ORDER BY
           orders.order_id ASC";
 

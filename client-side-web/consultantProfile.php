@@ -8,7 +8,6 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <link href="img/favicon.ico" rel="icon">
-  <link href="css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/header.css">
   <link rel="stylesheet" href="./css/consultantProfile.css">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
@@ -45,20 +44,25 @@
             </div>
 
             <div class="col-2">
-              <p>
+              <p class="para">
                 <?php echo $record['title'] ?>
               </p>
               <h1><?php echo $record['consultantUsername'] ?></h1>
 
-              <p>Availability: <?php echo $record['availability'] ?></p>
+              <p class="para">Availability: <?php echo $record['availability'] ?></p>
 
-              <a href="./components/hire.php?con_id=<?php echo $con_id ?>">
+              <a class="txt" href="./components/hire.php?con_id=<?php echo $con_id ?>">
                 <button class="btn" type="submit" name="buy">Hire Now</button>
               </a>
 
               <h3>About Me</h3>
               <br />
-              <p><?php echo $record['description'] ?></p>
+              <p align="justify" class="para"><?php echo $record['description'] ?></p>
+
+              <div class="whatsapp_float">
+                <a href="https://wa.me/<?php echo $record['consultantMobileNo'] ?>" target="_blank"><img src="../assets/images/client-side/whatsapp.png" width="60px" width="60px" class="whatsapp_float_btn" /></a>
+              </div>
+
             </div>
           </div>
         </div>
@@ -68,6 +72,18 @@
   }
 
   ?>
+
+  <style>
+    .whatsapp_float {
+      position: fixed;
+      bottom: 40px;
+      right: 30px;
+    }
+
+    .hireP {
+      padding: 4px;
+    }
+  </style>
 
 </body>
 

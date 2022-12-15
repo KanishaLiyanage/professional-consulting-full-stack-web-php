@@ -7,9 +7,68 @@ if (!isset($_SESSION['con_id'])) {
     header("Location: consultantLogin.php");
 }
 
-if (!isset($_SESSION['con_id'])) {
-    echo "Consultant ID pass failed!";
+$consultant_id = $_SESSION['con_id'];
+
+?>
+
+<?php
+
+$order_list = "";
+$numberOfClients = "";
+
+$query = "SELECT
+          orders.*,
+          customers.*,
+          consultants.*
+          FROM
+          orders
+          INNER JOIN consultants ON orders.consultant_id = consultants.consultant_id
+          INNER JOIN customers ON orders.customer_id = customers.customer_id
+          WHERE orders.consultant_id = '{$consultant_id}'
+          ORDER BY
+          orders.order_id DESC
+          LIMIT 5";
+
+$orders = mysqli_query($connection, $query);
+
+$countQuery = "SELECT
+          orders.*,
+          customers.*,
+          consultants.*
+          FROM
+          orders
+          INNER JOIN consultants ON orders.consultant_id = consultants.consultant_id
+          INNER JOIN customers ON orders.customer_id = customers.customer_id
+          WHERE orders.consultant_id = '{$consultant_id}'
+          ORDER BY
+          orders.order_id ASC";
+
+$count = mysqli_query($connection, $countQuery);
+
+$numberOfClients = mysqli_num_rows($count);
+
+if ($orders) {
+    while ($order = mysqli_fetch_assoc($orders)) {
+
+        $_GET['consultant_id'] = $order['consultant_id'];
+        $_GET['title'] = $order['title'];
+        $_GET['ratings'] = $order['ratings'];
+
+        $order_list .= "<tbody>";
+        $order_list .= "<tr>";
+        $order_list .= "<td class=\"text-left\"> {$order['customerUsername']} </td>";
+        $order_list .= "<td class=\"text-left\"> {$order['customerMobileNo']} </td>";
+        $order_list .= "<td class=\"text-left\"> {$order['orderedDate']} </td>";
+        $order_list .= "<td class=\"text-left\"> {$order['shipmentDate']} </td>";
+        // $consultant_list .= "<td class=\"text-left\"> <a href=\"item.php?con_id={$_GET['consultant_id']}&con_title={$_GET['title']}&con_name={$_GET['firstName']}\"> go to this consultant </a> </td>";
+        $order_list .= "<td class=\"text-left\"> <a href=\"components/completed.php?con_id={$order['consultant_id']}\" onclick = \"return confirm('Are you sure to complete the order?');\"> Completed </a> </td>";
+        $order_list .= "</tr>";
+        $order_list .= "</tbody>";
+    }
+} else {
+    echo "DB Failed!";
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -44,20 +103,11 @@ if (!isset($_SESSION['con_id'])) {
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <h1>2194</h1>
+                        <h1><?php echo $numberOfClients ?></h1>
                         <h3>Clients</h3>
                     </div>
                     <div class="icon-case">
                         <img src="../assets/images/admin-side/students.png" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <h1>53</h1>
-                        <h3>Consultants</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="../assets/images/admin-side/teachers.png" alt="">
                     </div>
                 </div>
             </div>
@@ -68,46 +118,14 @@ if (!isset($_SESSION['con_id'])) {
                     </div>
                     <table>
                         <tr>
-                            <th>Name</th>
-                            <th>Profession</th>
-                            <th>Package</th>
-                            <th>Option</th>
+                            <th>Customer Name</th>
+                            <th>Mobile Number</th>
+                            <th>Ordered Date</th>
+                            <th>Service Date</th>
+                            <th>Status</th>
                         </tr>
                         <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">Delete</a></td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">Delete</a></td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">Delete</a></td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">Delete</a></td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">Delete</a></td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">Delete</a></td>
+                            <?php echo $order_list; ?>
                         </tr>
                     </table>
                 </div>

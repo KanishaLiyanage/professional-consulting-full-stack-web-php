@@ -7,8 +7,78 @@ if (!isset($_SESSION['ad_id'])) {
     header("Location: adminLogin.php");
 }
 
-if (!isset($_SESSION['ad_id'])) {
-    echo "Admin ID pass failed!";
+?>
+
+<?php
+
+$customer_list = "";
+$numberOfClients = "";
+
+$query = "SELECT * FROM customers
+          WHERE
+          isDeleted = 0
+          ORDER BY
+          customer_id";
+
+$customers = mysqli_query($connection, $query);
+
+$numberOfClients = mysqli_num_rows($customers);
+
+if ($customers) {
+    while ($customer = mysqli_fetch_assoc($customers)) {
+    }
+} else {
+    echo "DB Failed!";
+}
+
+?>
+
+<?php
+
+$consultant_list = "";
+$numberOfConsultants = "";
+
+$query = "SELECT * FROM consultants
+          WHERE
+          isDeleted = 0
+          ORDER BY
+          consultant_id
+          DESC
+          LIMIT 5";
+
+$countQuery = "SELECT * FROM consultants
+               WHERE
+               isDeleted = 0
+               ORDER BY
+               consultant_id";
+
+$consultants = mysqli_query($connection, $query);
+$count = mysqli_query($connection, $countQuery);
+
+$numberOfConsultants = mysqli_num_rows($count);
+
+if ($consultants) {
+    while ($consultant = mysqli_fetch_assoc($consultants)) {
+
+        $_GET['consultant_id'] = $consultant['consultant_id'];
+        $_GET['consultantUsername'] = $consultant['consultantUsername'];
+        $_GET['firstName'] = $consultant['consultantFirstName'];
+        $_GET['lastName'] = $consultant['consultantLastName'];
+        $_GET['title'] = $consultant['title'];
+        $_GET['ratings'] = $consultant['ratings'];
+
+        $consultant_list .= "<tbody>";
+        $consultant_list .= "<tr>";
+        $consultant_list .= "<td class=\"text-left\"> {$consultant['consultantFirstName']} </td>";
+        $consultant_list .= "<td class=\"text-left\"> {$consultant['consultantLastName']} </td>";
+        $consultant_list .= "<td class=\"text-left\"> {$consultant['title']} </td>";
+        $consultant_list .= "<td class=\"text-left\"> {$consultant['consultantEmail']} </td>";
+        $consultant_list .= "<td class=\"text-left\"> {$consultant['consultantMobileNo']} </td>";
+        $consultant_list .= "</tr>";
+        $consultant_list .= "</tbody>";
+    }
+} else {
+    echo "DB Failed!";
 }
 
 ?>
@@ -45,7 +115,7 @@ if (!isset($_SESSION['ad_id'])) {
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <h1>2194</h1>
+                        <h1><?php echo $numberOfClients ?></h1>
                         <h3>Clients</h3>
                     </div>
                     <div class="icon-case">
@@ -54,113 +124,30 @@ if (!isset($_SESSION['ad_id'])) {
                 </div>
                 <div class="card">
                     <div class="box">
-                        <h1>53</h1>
+                        <h1><?php echo $numberOfConsultants ?></h1>
                         <h3>Consultants</h3>
                     </div>
                     <div class="icon-case">
                         <img src="../assets/images/admin-side/teachers.png" alt="">
                     </div>
                 </div>
-                <div class="card">
-                    <div class="box">
-                        <h1>5</h1>
-                        <h3>Companies</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="../assets/images/admin-side/schools.png" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <h1>350000</h1>
-                        <h3>Income</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="../assets/images/admin-side/income.png" alt="">
-                    </div>
-                </div>
             </div>
             <div class="content-2">
                 <div class="recent-payments">
                     <div class="title">
-                        <h2>Recent Payments</h2>
+                        <h2>Recent Consultants</h2>
                     </div>
                     <table>
                         <tr>
-                            <th>Name</th>
-                            <th>Profession</th>
-                            <th>Package</th>
-                            <th>Option</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Title</th>
+                            <th>Email</th>
+                            <th>Mobile Number</th>
                         </tr>
                         <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">Delete</a></td>
+                            <?php echo $consultant_list; ?>
                         </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">Delete</a></td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">Delete</a></td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">Delete</a></td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">Delete</a></td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">Delete</a></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="new-students">
-                    <div class="title">
-                        <h2>New Clients</h2>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Profile</th>
-                            <th>Name</th>
-                            <th>option</th>
-                        </tr>
-                        <tr>
-                            <td><img src="../assets/images/admin-side/user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="img/info.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src="../assets/images/admin-side/user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="../assets/images/admin-side/info.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src="../assets/images/admin-side/user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="../assets/images/admin-side/info.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src="../assets/images/admin-side/user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="../assets/images/admin-side/info.png" alt=""></td>
-                        </tr>
-
                     </table>
                 </div>
             </div>

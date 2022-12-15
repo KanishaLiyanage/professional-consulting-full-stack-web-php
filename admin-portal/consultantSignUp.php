@@ -37,16 +37,18 @@ if (isset($_POST['signup']) && isset($_FILES['image'])) {
                 $con_title = mysqli_real_escape_string($connection, $_POST['title']);
                 $desc = mysqli_real_escape_string($connection, $_POST['description']);
                 $avl = mysqli_real_escape_string($connection, $_POST['availability']);
-            
-                $query = "INSERT INTO consultants(username, firstName, lastName, email, password, image, title, description, availability) VALUES ('{$user_name}', '{$first_Name}', '{$last_Name}', '{$con_email}', '{$pw}', '{$con_title}', '{$desc}', '{$avl}')";
-            
+                $mNO = mysqli_real_escape_string($connection, $_POST['mobileNo']);
+
+                $query = "INSERT INTO consultants(consultantUsername, consultantFirstName, consultantLastName, consultantEmail, password, consultantMobileNo, image, title, description, availability)
+                          VALUES ('{$user_name}', '{$first_Name}', '{$last_Name}', '{$con_email}', '{$pw}', '{$mNO}', '{$new_img_name}', '{$con_title}', '{$desc}', '{$avl}')";
+
                 $result = mysqli_query($connection, $query);
 
                 if ($result) {
-                    $consultant = mysqli_fetch_assoc($result);
-                    $_SESSION['con_id'] = $consultant['consultant_id'];
-                    $_SESSION['con_username'] = $consultant['username'];
-                    header("Location: consultantDashboard.php");
+                    //$consultant = mysqli_fetch_assoc($result);
+                    // $_SESSION['con_id'] = $consultant['consultant_id'];
+                    // $_SESSION['con_username'] = $consultant['consultantUsername'];
+                    header("Location: consultantLogin.php");
                 }
             } else {
                 echo "File extension can not be allowed! Please upload jpg files only.";
@@ -55,8 +57,6 @@ if (isset($_POST['signup']) && isset($_FILES['image'])) {
     } else {
         echo "Error in Image file!";
     }
-} else {
-    echo "There is an error in your inputs!";
 }
 
 ?>
@@ -69,39 +69,53 @@ if (isset($_POST['signup']) && isset($_FILES['image'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="./css/signUp.css">
 </head>
 
 <body>
 
-    <a href="consultantLogin.php"> back </a>
+    <div class="bodyclass">
 
-    <form action="consultantSignUp.php" method="POST" enctype="multipart/form-data">
+        <form action="./consultantSignUp.php" method="post" enctype="multipart/form-data">
+            <h2>SIGN UP</h2>
 
-        <h1>Sign Up as a Consultant</h1>
+            <label>User Name</label>
+            <input type=" text" name="username" placeholder="User Name"><br>
 
-        User Name: <input type="text" name="username" maxlength="50" required>
-        <br>
-        First Name: <input type="text" name="firstName" maxlength="50" required>
-        <br>
-        Last Name: <input type="text" name="lastName" maxlength="50" required>
-        <br>
-        Email: <input type="email" name="email" required>
-        <br>
-        Password: <input type="password" name="password" required>
-        <br>
-        Image: <input type="file" name="image" required>
-        <br>
-        Title: <input type="text" name="title" required>
-        <br>
-        Description: <textarea name="description" rows="4" cols="50" required></textarea>
-        <br>
-        Availability: <input type="text" name="availability" required>
-        <br>
+            <label>First Name</label>
+            <input type="text" name="firstName" placeholder="First Name"><br>
 
-        <button type="submit" name="signup">Sign Up</button>
+            <label>Last Name</label>
+            <input type="text" name="lastName" placeholder="Last Name"><br>
 
-    </form>
+            <label>Email</label>
+            <input type="email" name="email" placeholder="User Email"><br>
+
+            <label>Mobile No</label>
+            <input type="text" name="mobileNo" placeholder="Mobile no"><br>
+
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Password"><br>
+
+            <label>Image</label>
+            <input type="file" name="image" placeholder="Upload photo"><br>
+
+            <label>Title</label>
+            <input type="text" name="title" placeholder="Title"><br>
+
+            <label>Description</label>
+            <input type="text" name="description" placeholder="Description"><br>
+
+            <label>Availability</label>
+            <input type="text" name="availability" placeholder="Availability"><br>
+
+            <button type="submit" name="signup">Sign Up</button>
+
+            <a href="consultantLogin.php" class="ca">Already have an account?</a>
+
+        </form>
+
+    </div>
 
 </body>
 
