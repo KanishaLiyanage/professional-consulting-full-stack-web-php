@@ -23,9 +23,12 @@
         </header>
         <div class="content">
             <div class="info">
-                <h2>like nature <br><span>be creative!</span></h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium ipsum, ullam doloremque quidem fuga eveniet. Praesentium officiis repellat, accusamus perspiciatis reprehenderit soluta sapiente quas, velit deserunt excepturi adipisci ducimus? Odio.</p>
-                <a href="./home.php" class="info-btn">get-start</a>
+                <h2>Are you looking for services?</h2>
+                <p>
+                    Are you feeling stuck in business? Get business help through professional services such as business consulting services. Business consultants work with clients to create momentum, results, and profitability. Find out more here.
+                    Ready to talk to a consultant? Give us a call and talk to a business expert about your business, challenges, and company goals.
+                </p>
+                <a href="./home.php" class="info-btn">Get Started</a>
             </div>
         </div>
     </section>

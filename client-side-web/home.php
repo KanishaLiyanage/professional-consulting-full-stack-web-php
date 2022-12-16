@@ -27,7 +27,7 @@
 
             <form action="./search.php" method="POST">
                 <input type="text" name="keyword" required>
-                <input class="search-form" type="submit" name='submit' value="Find job">
+                <input class="search-form" type="submit" name='submit' value="Find Consultant">
             </form>
 
             <br>
@@ -47,21 +47,23 @@
             <div class="col">
                 <img src="../assets/images/client-side/2.png" alt="">
                 <h4>Professional Consultants</h4>
-                <p>Lorem ipsum,
-                    dolor sit amet consectetur adipisicing elit.
-                    Pariatur debitis laborum accusantium id nisi.
-                    Sunt, omnis accusantium? Fugit nihil sequi consectetur consequuntur ab magni,
-                    earum tempore repudiandae amet minima mollitia.</p>
+                <p>
+                    Our team is made up of experienced professionals in their field
+                    that are enthusiastic about the work they do and have vast experience
+                    working in a wide range of fields and applications.
+                </p>
                 <a href="./consultantList.php" class="ctn">See More</a>
             </div>
 
             <div class="col">
                 <img src="../assets/images/client-side/3.png" alt="">
                 <h4>Best Packages</h4>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Pariatur debitis laborum accusantium id nisi. Sunt, omnis accusantium?
-                    Fugit nihil sequi consectetur consequuntur ab magni,
-                    earum tempore repudiandae amet minima mollitia.</p>
+                <p>
+                    Everything you offer in one bloated package.
+                    There are three packages that you can choose
+                    one of them to make a solution delivered at
+                    maximum speed with minimum risk.
+                </p>
                 <a href="./bestPackages.php" class="ctn">See More</a>
             </div>
 
@@ -71,7 +73,14 @@
         <div class="services-content">
             <h1>Our Services</h1>
             <div class="line"></div>
-            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, eum accusantium ipsum iure, iusto magni veniam, voluptatem totam corporis provident ex. Corporis sed atque suscipit aperiam obcaecati ullam eius numquam?</P>
+            <P>
+                We provide expertise in a specific market.
+                Identifying the root problem
+                Initiating change.
+                Providing objectivity.
+                Teaching and training employees.
+                Reviving an organization.
+            </P>
             <a href="./services.php" class="ctn">Learn More</a>
         </div>
     </section>
@@ -81,7 +90,9 @@
             <div class="col content-col">
                 <h1>OUR EXPERTS</h1>
                 <div class="line"></div>
-                <P>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim incidunt adipisci quidem culpa nostrum odit voluptates quia laborum numquam provident autem officiis officia odio sint inventore veritatis, quisquam dicta doloribus!</P>
+                <P>
+                    Our team is made up of experienced professionals in their field that are enthusiastic about the work they do and have vast experience working in a wide range of fields and applications.
+                </P>
                 <a href="./experts.php" class="ctn">See More</a>
             </div>
             <div class="col image-col">
